@@ -1,0 +1,21 @@
+int value = 0; 
+int brightness = 0; 
+
+void setup() {
+  Serial.begin(9600); 
+}
+
+void loop() {
+    value = analogRead(A1); 
+    Serial.println(value); 
+    if(value < 200){
+      if(value % 2 != 0){
+        value = value - 1; 
+      }
+      brightness = 255 - (value/2); 
+      analogWrite(A3, brightness); 
+    }
+    else{ 
+      analogWrite(A3, 0); 
+    }
+}
