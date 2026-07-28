@@ -1,0 +1,20 @@
+#include <AccelStepper.h> 
+
+AccelStepper magnet(8, 8, 10, 9, 11); 
+
+int d = -9000; 
+int c = 0; 
+
+void setup(){
+  Serial.begin(9600); 
+  magnet.setMaxSpeed(10000); 
+  magnet.setSpeed(10000); 
+  magnet.setAcceleration(700); 
+}
+
+void loop(){
+   magnet.moveTo(d);  
+   magnet.run();
+   c = magnet.currentPosition(); 
+   Serial.println(c); 
+}
